@@ -2,6 +2,9 @@
 	Facebook 帳號登入整合教學(Local端開發角度, 不需要 Domain Name, 使用 host file 模擬即可)
 	參考：http://blog.coolsea.net/2013/12/rails4%E4%BD%BF%E7%94%A8omniauth%E6%95%B4%E5%90%88facebook%E5%8F%8Agoogle%E8%A8%BB%E5%86%8A%E8%AA%8D%E8%AD%89/
 
+	Facebook Server-Side Access Plugin:
+	參考：https://github.com/nov/fb_graph
+
 	<pre>
 		/etc/hosts add:
 			127.0.0.1 		www.sample.com
@@ -18,5 +21,30 @@
 			  provider :facebook, 'xxxxx', 'xxxx', provider_ignores_state: true
 
 			end
+	</pre>
+	<br>
+	<pre>
+		USER_ACCESS_TOKEN 可以透過 OAuth 或 JavaScript SDK 登入後傳給 Server-Side 提供給這隻 fb_graph Plugin 使用
+
+		# Get an access token of page
+		page = FbGraph::Page.new('FbGraph').fetch(
+		  :access_token => USER_ACCESS_TOKEN,
+		  :fields => :access_token
+		)
+
+		# List of all installed tabs (includes wall & info tabs)
+		tabs = page.tabs
+
+		# Install a tab
+		tab = page.tab!(:app_id => APP_ID_YOU_WANT_TO_INSTALL)
+
+		# Update an existing tab
+		tab.update(
+		  :custom_name => 'Custom Name',
+		  :position => 1
+		)
+
+		# Uninstall a tab
+		tab.destroy
 	</pre>
 </p>

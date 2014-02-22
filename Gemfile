@@ -44,8 +44,11 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# add plugin
+# add plugin for site oauth login feature
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+
+# add plugin for server-side access facebook api
+gem 'fb_graph'
 
