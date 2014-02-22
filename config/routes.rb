@@ -1,4 +1,5 @@
 RailsIntegraterFacebook::Application.routes.draw do
+  get "book/home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -59,4 +60,8 @@ RailsIntegraterFacebook::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
   get '/home' => 'sessions#home'
+
+  resources :aa do
+    resources :bb
+  end
 end

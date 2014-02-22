@@ -1,0 +1,42 @@
+<h1>Book#home</h1>
+<p>Find me in app/views/book/home.html.erb</p>
+
+<pre>
+	created by command: rails g controller book home
+</pre>
+
+<pre>
+	Model
+		Active Record Callbacks
+
+		Callbacks are hooks into the life cycle of an Active Record object that allow you to trigger logic before or after an alteration of the object state. This can be used to make sure that associated and dependent objects are deleted when destroy is called (by overwriting before_destroy) or to massage attributes before they're validated (by overwriting before_validation). As an example of the callbacks initiated, consider the Base#save call for a new record:
+
+		(-) save
+
+		(-) valid
+
+			(1) before_validation
+
+		(-) validate
+
+			(2) after_validation
+
+			(3) before_save
+
+			(4) before_create
+
+		(-) create
+
+			(5) after_create
+
+			(6) after_save
+
+			(7) after_commit
+
+	Controller
+		As we can see in ActionController::Base, before_action is just a new syntax for before_filter and old syntax isn't even deprecated.
+
+		before_filter <=> before_action
+
+		改名為 before_action 但是就的關鍵字依然可以用！
+</pre>
