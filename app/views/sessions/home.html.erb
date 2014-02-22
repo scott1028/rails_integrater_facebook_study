@@ -1,4 +1,22 @@
 <p>
-	Facebook 帳號登入整合教學
+	Facebook 帳號登入整合教學(Local端開發角度, 不需要 Domain Name, 使用 host file 模擬即可)
 	參考：http://blog.coolsea.net/2013/12/rails4%E4%BD%BF%E7%94%A8omniauth%E6%95%B4%E5%90%88facebook%E5%8F%8Agoogle%E8%A8%BB%E5%86%8A%E8%AA%8D%E8%AD%89/
+
+	<pre>
+		/etc/hosts add:
+			127.0.0.1 		www.sample.com
+
+		facebook app setting:
+			site url add: www.sample.com
+			domain add: www.sample.com
+
+			must disable sandbox mode, or you will get csrf_token error in Status & Review Page set it available for general public!
+
+		add code in config/initializer/omniauth.rb:
+			Rails.application.config.middleware.use OmniAuth::Builder do
+	    
+			  provider :facebook, 'xxxxx', 'xxxx', provider_ignores_state: true
+
+			end
+	</pre>
 </p>
